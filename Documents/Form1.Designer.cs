@@ -45,6 +45,7 @@
             this.olvColumn1,
             this.olvColumn2,
             this.olvColumn3});
+            this.objectListView1.Cursor = System.Windows.Forms.Cursors.Default;
             this.objectListView1.HideSelection = false;
             this.objectListView1.Location = new System.Drawing.Point(56, 36);
             this.objectListView1.Name = "objectListView1";
@@ -63,7 +64,7 @@
             // 
             // olvColumn3
             // 
-            this.olvColumn3.AspectName = "DocCreateData";
+            this.olvColumn3.AspectName = "DocCreateTime";
             // 
             // Form1
             // 
