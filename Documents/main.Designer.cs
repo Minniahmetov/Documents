@@ -1,6 +1,6 @@
 ﻿namespace Documents
 {
-    partial class Form1
+    partial class main
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -32,6 +32,7 @@
             this.olvColumn1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.AddGood = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.objectListView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,13 +67,24 @@
             // 
             this.olvColumn3.AspectName = "DocCreateTime";
             // 
-            // Form1
+            // AddGood
+            // 
+            this.AddGood.Location = new System.Drawing.Point(56, 346);
+            this.AddGood.Name = "AddGood";
+            this.AddGood.Size = new System.Drawing.Size(75, 23);
+            this.AddGood.TabIndex = 1;
+            this.AddGood.Text = "AddGood";
+            this.AddGood.UseVisualStyleBackColor = true;
+            this.AddGood.Click += new System.EventHandler(this.AddGood_Click);
+            // 
+            // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.AddGood);
             this.Controls.Add(this.objectListView1);
-            this.Name = "Form1";
+            this.Name = "main";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.objectListView1)).EndInit();
             this.ResumeLayout(false);
@@ -85,6 +97,7 @@
         private BrightIdeasSoftware.OLVColumn olvColumn1;
         private BrightIdeasSoftware.OLVColumn olvColumn2;
         private BrightIdeasSoftware.OLVColumn olvColumn3;
+        private System.Windows.Forms.Button AddGood;
     }
 }
 

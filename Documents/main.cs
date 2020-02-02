@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Documents
 {
-    public partial class Form1 : Form
+    public partial class main : Form
     {
-        public Form1()
+        public main()
         {
             InitializeComponent();
             Doc Doc1 = new Doc();
@@ -40,7 +40,11 @@ namespace Documents
             Docs.Add(Doc1);
             this.objectListView1.SetObjects(Docs);
         }
-        
-        
+
+        private void AddGood_Click(object sender, EventArgs e)
+        {
+            AddGood AddGoodForm = new AddGood();
+            AddGoodForm.Show();
+        }
     }
 }
