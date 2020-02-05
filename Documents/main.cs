@@ -46,5 +46,11 @@ namespace Documents
             AddGood AddGoodForm = new AddGood();
             AddGoodForm.Show();
         }
+
+        private void AddDoc_Click(object sender, EventArgs e)
+        {
+            AddDoc AddDocForm = new AddDoc();
+            AddDocForm.Show();
+        }
     }
 }

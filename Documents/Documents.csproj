@@ -70,19 +70,43 @@
     <Compile Include="AddGood.Designer.cs">
       <DependentUpon>AddGood.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddDoc.Designer.cs">
+      <DependentUpon>AddDoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="main.Designer.cs">
       <DependentUpon>main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001280549302_InitialCreate.cs" />
+    <Compile Include="Migrations\202001280549302_InitialCreate.designer.cs">
+      <DependentUpon>202001280549302_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002050935289_AddGoodMigration.cs" />
+    <Compile Include="Migrations\202002050935289_AddGoodMigration.designer.cs">
+      <DependentUpon>202002050935289_AddGoodMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddDoc.resx">
+      <DependentUpon>AddDoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddGood.resx">
       <DependentUpon>AddGood.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001280549302_InitialCreate.resx">
+      <DependentUpon>202001280549302_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002050935289_AddGoodMigration.resx">
+      <DependentUpon>202002050935289_AddGoodMigration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -94,6 +118,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Documents.classes.DocContext.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

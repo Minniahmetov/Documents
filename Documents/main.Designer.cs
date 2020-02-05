@@ -33,6 +33,7 @@
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.AddGood = new System.Windows.Forms.Button();
+            this.AddDoc = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.objectListView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,14 +59,17 @@
             // olvColumn1
             // 
             this.olvColumn1.AspectName = "id";
+            this.olvColumn1.Width = 178;
             // 
             // olvColumn2
             // 
             this.olvColumn2.AspectName = "DocType";
+            this.olvColumn2.Width = 139;
             // 
             // olvColumn3
             // 
             this.olvColumn3.AspectName = "DocCreateTime";
+            this.olvColumn3.Width = 179;
             // 
             // AddGood
             // 
@@ -77,11 +81,22 @@
             this.AddGood.UseVisualStyleBackColor = true;
             this.AddGood.Click += new System.EventHandler(this.AddGood_Click);
             // 
+            // AddDoc
+            // 
+            this.AddDoc.Location = new System.Drawing.Point(56, 4);
+            this.AddDoc.Name = "AddDoc";
+            this.AddDoc.Size = new System.Drawing.Size(175, 23);
+            this.AddDoc.TabIndex = 2;
+            this.AddDoc.Text = "Создать документ";
+            this.AddDoc.UseVisualStyleBackColor = true;
+            this.AddDoc.Click += new System.EventHandler(this.AddDoc_Click);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.AddDoc);
             this.Controls.Add(this.AddGood);
             this.Controls.Add(this.objectListView1);
             this.Name = "main";
@@ -98,6 +113,7 @@
         private BrightIdeasSoftware.OLVColumn olvColumn2;
         private BrightIdeasSoftware.OLVColumn olvColumn3;
         private System.Windows.Forms.Button AddGood;
+        private System.Windows.Forms.Button AddDoc;
     }
 }
 

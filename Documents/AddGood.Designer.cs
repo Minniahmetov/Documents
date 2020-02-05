@@ -78,6 +78,7 @@
             this.cancel_button.TabIndex = 3;
             this.cancel_button.Text = "Отмена";
             this.cancel_button.UseVisualStyleBackColor = true;
+            this.cancel_button.Click += new System.EventHandler(this.cancel_button_Click);
             // 
             // good_id
             // 
@@ -121,10 +122,14 @@
             // olvColumn1
             // 
             this.olvColumn1.AspectName = "id";
+            this.olvColumn1.Text = "Код";
+            this.olvColumn1.Width = 119;
             // 
             // olvColumn2
             // 
             this.olvColumn2.AspectName = "name";
+            this.olvColumn2.Text = "Наименование";
+            this.olvColumn2.Width = 93;
             // 
             // errorProvider2
             // 

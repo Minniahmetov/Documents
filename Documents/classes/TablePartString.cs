@@ -8,6 +8,7 @@ namespace Documents
 {
     public class TablePartString
     {
+        public byte serial;
         public Good Good;
         public int quantity;
         public int balance;
