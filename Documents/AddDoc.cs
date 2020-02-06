@@ -114,6 +114,7 @@ namespace Documents
         {
             dataGridView1.Rows.Add();
             dataGridView1.Rows[0].Cells[0].Value = "1";
+            rowDelete.Enabled = false;
         }
 
         private void rowDelete_Click(object sender, EventArgs e)
@@ -122,12 +123,30 @@ namespace Documents
             if (dataGridView1.CurrentRow != null)
             {
                 dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);
+                EnableRowDeleteButton(dataGridView1.Rows.Count);
             }
         }
 
         private void rowAdd_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Add();
+            EnableRowDeleteButton(dataGridView1.Rows.Count);
+        }
+
+        private void EnableRowDeleteButton(int count)
+        {
+            if (count > 1)
+            {
+                rowDelete.Enabled = true;
+            }
+            else if (count == 1)
+            {
+                rowDelete.Enabled = false;
+            }
+            else if (count < 1)
+            {
+                // что то пошле не так
+            }
         }
     }
 }
