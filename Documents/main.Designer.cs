@@ -55,20 +55,24 @@
             this.objectListView1.TabIndex = 0;
             this.objectListView1.UseCompatibleStateImageBehavior = false;
             this.objectListView1.View = System.Windows.Forms.View.Details;
+            this.objectListView1.SelectedIndexChanged += new System.EventHandler(this.objectListView1_SelectedIndexChanged);
             // 
             // olvColumn1
             // 
             this.olvColumn1.AspectName = "id";
-            this.olvColumn1.Width = 178;
+            this.olvColumn1.Text = "Номер";
+            this.olvColumn1.Width = 57;
             // 
             // olvColumn2
             // 
             this.olvColumn2.AspectName = "DocType";
+            this.olvColumn2.Text = "Тип документа";
             this.olvColumn2.Width = 139;
             // 
             // olvColumn3
             // 
             this.olvColumn3.AspectName = "DocCreateTime";
+            this.olvColumn3.Text = "Дата";
             this.olvColumn3.Width = 179;
             // 
             // AddGood

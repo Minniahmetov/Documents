@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classes\Store.cs" />
     <Compile Include="classes\DocContext.cs" />
     <Compile Include="classes\Doc.cs" />
     <Compile Include="classes\TablePart.cs" />

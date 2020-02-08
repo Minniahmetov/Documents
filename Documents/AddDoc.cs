@@ -19,39 +19,9 @@ namespace Documents
             InitializeComponent();
             using (DocContext db = new DocContext())
             {
-                //var GoodsList = db.Goods;
-
-                //    name.DataSource = GoodsList.ToList();
-                //    name.DisplayMember = "name";
-                //    name.ValueMember = "name";
-                //    name.MaxDropDownItems = 5;
-                //name.Items.Add("Найти");
-                //name.Items.Add("Добавить");
-
-
-                //{
-                //    name.DataSource = db.Goods;
-                //    name.DisplayMember = "Name";
-                //    name.ValueMember = "id";
-                //}
-                //catch (Exception)
-                //{
-
-                //   name.Items.Add("None");
-                //}
-
-                //name.Items.Add("Добавить из списка");
-                //foreach (Good g in db.Goods) name.Items.Add(g);
-                //name.DisplayMember = "name";
-                //name.ValueMember = "name";
-                //name.Items.Add("Найти");
-                //name.Items.Add("Добавить");
-                //name.AutoComplete = false;
-                //name.MaxDropDownItems = 5;
                 dataGridView1.EditingControlShowing += new DataGridViewEditingControlShowingEventHandler(dataGridView1_EditingControlShowing);
                 dataGridView1.RowsAdded += new DataGridViewRowsAddedEventHandler(dataGridView1_RowsAdded);
                 dataGridView1.RowsRemoved += new DataGridViewRowsRemovedEventHandler(dataGridView1_RowsRemoved);
-
             }
         }
 
@@ -84,10 +54,10 @@ namespace Documents
         }
         private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            using (DocContext db = new DocContext())
-            {
-                string titleText = name.HeaderText;
-                if (titleText.Equals("Наименование"))
+            //using (DocContext db = new DocContext())
+            //{
+                int ColIndex = dataGridView1.CurrentCell.ColumnIndex;
+                if (ColIndex == 1)
                 {
                     TextBox autoText = e.Control as TextBox;
                     if (autoText != null)
@@ -99,6 +69,25 @@ namespace Documents
                         autoText.AutoCompleteCustomSource = DataCollection;
                     }
                 }
+                else if (ColIndex == 2)
+                {
+                TextBox tb1 = e.Control as TextBox;
+                tb1.AutoCompleteMode = AutoCompleteMode.None;
+                if (tb1 != null)
+                {
+                    tb1.KeyPress += new KeyPressEventHandler(CheckKey);
+                }
+                }
+            //}
+        }
+
+        private void CheckKey(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar)
+                && !char.IsDigit(e.KeyChar)
+                && e.KeyChar != '.')
+            {
+                e.Handled = true;
             }
         }
 
@@ -146,6 +135,91 @@ namespace Documents
             else if (count < 1)
             {
                 // что то пошле не так
+            }
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Rows.Count > 0 && dataGridView1.Columns.Count > 0 )
+            {
+                dataGridView1.Rows[e.RowIndex].Cells[3].Value = "0";
+            }
+            //dataGridView1.Rows[0].Cells[3].Value = "999";
+            //if (e.ColumnIndex == 1)
+            //{
+            //    DataGridView grid = sender as DataGridView;
+            //    if (e.RowIndex > dataGridView1.Rows.Count)
+            //    {
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        dataGridView1.Rows[0].Cells[0].Value = (999).ToString();
+            //    }
+                
+            //}
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void save_Click(object sender, EventArgs e)
+        {
+            using (DocContext db = new DocContext()) 
+            {
+
+                Doc newDoc = new Doc();
+                newDoc.DocCreateTime = DateTime.Now;
+                newDoc.DocType = comboBox1.SelectedItem.ToString();
+                TablePart tablePart = new TablePart();
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    string nameCellValue = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                    if (db.Goods.FirstOrDefault(Good => Good.name == nameCellValue) != null)
+                    {
+                        TablePartString tablePartString = new TablePartString();
+                        tablePartString.serial = i;
+                        tablePartString.Good = db.Goods.FirstOrDefault(Good => Good.name == nameCellValue);
+                        tablePartString.quantity = int.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                        tablePartString.balance = int.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString());
+                        tablePart.AddString(tablePartString);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Документ НЕ сохранен");
+                        return;
+                    }
+                    
+                }
+                newDoc.DocTablePart = tablePart;
+                
+
+                db.Docs.Add(newDoc);
+                foreach (TablePartString stringWhithGoodForAddBalance in tablePart)
+                {
+                    string goodNameForAddBalance = stringWhithGoodForAddBalance.Good.name.ToString();
+                    Good goodForAddBalance = db.Goods.FirstOrDefault(Good => Good.name == goodNameForAddBalance);
+                    goodForAddBalance.balance += int.Parse(stringWhithGoodForAddBalance.balance.ToString());
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Не удалось сохранить изменения в " + stringWhithGoodForAddBalance.serial.ToString() + " строке документа!");
+                        throw;
+                    }
+                }
+                //string goodName = dataGridView1.Rows[0].Cells[1].Value.ToString();
+                //Good goodItem = db.Goods.FirstOrDefault(Good => Good.name == goodName);
+                //goodItem.balance += int.Parse(dataGridView1.Rows[0].Cells[2].Value.ToString());
+                //db.SaveChanges();
+             
+
+                MessageBox.Show("Документ сохранен");
+
             }
         }
     }

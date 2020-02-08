@@ -40,6 +40,7 @@
             this.olvColumn1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.olvColumn3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectListView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
@@ -106,10 +107,12 @@
             // 
             this.objectListView1.AllColumns.Add(this.olvColumn1);
             this.objectListView1.AllColumns.Add(this.olvColumn2);
+            this.objectListView1.AllColumns.Add(this.olvColumn3);
             this.objectListView1.CellEditUseWholeCell = false;
             this.objectListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumn1,
-            this.olvColumn2});
+            this.olvColumn2,
+            this.olvColumn3});
             this.objectListView1.Cursor = System.Windows.Forms.Cursors.Default;
             this.objectListView1.HideSelection = false;
             this.objectListView1.Location = new System.Drawing.Point(399, 55);
@@ -134,6 +137,11 @@
             // errorProvider2
             // 
             this.errorProvider2.ContainerControl = this;
+            // 
+            // olvColumn3
+            // 
+            this.olvColumn3.AspectName = "balance";
+            this.olvColumn3.Text = "Остаток";
             // 
             // AddGood
             // 
@@ -170,5 +178,6 @@
         private BrightIdeasSoftware.OLVColumn olvColumn1;
         private BrightIdeasSoftware.OLVColumn olvColumn2;
         private System.Windows.Forms.ErrorProvider errorProvider2;
+        private BrightIdeasSoftware.OLVColumn olvColumn3;
     }
 }
